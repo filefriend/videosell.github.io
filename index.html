@@ -88211,7 +88211,7 @@ async function uploadFile() {
             statusText.innerText = "❌ Error Uploading!";
         }
     } catch (error) {
-        statusText.innerText = "⚠️ Network-Error";
+        statusText.innerText = "⚠️ File too big!";
         console.error("Upload error:", error);
     }
 }

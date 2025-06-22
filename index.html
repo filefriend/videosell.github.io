@@ -87949,6 +87949,29 @@ background-color: #4CAF50; /* schönes Grün */
 <!-- Ausgabe der Download-/Ansehen-Links -->
 <div id="form-output" style="margin-top: 1rem; white-space: pre-wrap;"></div>
 
+
+<script>
+  window.addEventListener("load", () => {
+    const uploader = document.querySelector("uc-file-uploader-regular");
+
+    if (uploader) {
+      uploader.addEventListener("uploadcomplete", () => {
+        // Optional: kurze Verzögerung, falls DOM noch nicht bereit
+        setTimeout(() => {
+          const submitButton = document.querySelector("#upload-form .submit_button187");
+          if (submitButton) {
+            submitButton.click();
+          }
+        }, 200); // 200ms Delay zur Sicherheit
+      });
+    } else {
+      console.warn("Uploader-Element nicht gefunden!");
+    }
+  });
+</script>
+
+
+
 <script type="module">
   import * as UC from "https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@v1/web/uc-file-uploader-regular.min.js";
   UC.defineComponents(UC);
@@ -87966,6 +87989,7 @@ background-color: #4CAF50; /* schönes Grün */
       uploadedUUIDs = e.detail.successEntries.map(entry => entry.uuid).filter(Boolean);
       console.log("Fertig hochgeladen:", uploadedUUIDs);
       showPreviews(e.detail.successEntries);
+	  submitButton.click();
     }
   });
 
